@@ -1,0 +1,6 @@
+print("Welcome to the Simple Calculator")
+print("This calculator subtracts two user-provided numbers. Enter your first number, then second and the math will be done")
+x = input("")
+print("-")
+y = input("")
+print("=" +  str(int(x) - int(y)))
