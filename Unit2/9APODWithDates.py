@@ -6,6 +6,7 @@
 #This should work for any date from today all the way back to June 16, 1995
 #PLEASE KNOW: This program will crash if one of the few videos they uploaded is requested...It will only work for photos
 
+
 #IMPORTS
 import requests
 from PIL import Image
@@ -24,22 +25,33 @@ def fetch_apod(base_url, api_key, date_to_search):
 #base_url is the beginning of the url that we will go to for our APOD
 base_url = "https://api.nasa.gov/planetary/apod?api_key="
 #below, paste your NASA API Key.
-api_key = "sYlxxqiOHE2YgKOxQg9xtXZ6b1pFGF458seVL8Zm"
-date_to_search = "&date=2006-12-12"
-apod_data = fetch_apod(base_url,api_key,date_to_search)
+api_key = "sYlxxqiOHE2YgKOxQg9xtXZ6b1pFGF458seVL8Zm&date="
 
-#if the response we get back has a 'url'...
-if 'url' in apod_data:
-    print("Title:", apod_data['title'])
-    print("Date:", apod_data['date'])
-    print("Explanation:", apod_data['explanation'])
-    print("HD URL:", apod_data.get('hdurl', "Not available"))
-    print("URL:", apod_data['url'])
 
-    # Open and display the image
-    response = requests.get(apod_data['url'])
-    image = Image.open(BytesIO(response.content))
-    image.show()
-#otherwise, if it did not have a url...
-else:
-    print("Error:", apod_data.get('msg', 'Unknown error'))
+while True:
+    print("Print the date you want to search [YYYY-MM-DD]. No date will give you today's APOD")
+    date_to_search = input("")
+    try:
+        
+
+        apod_data = fetch_apod(base_url,api_key,date_to_search)
+        if 'url' in apod_data:
+            print("Title:", apod_data['title'])
+            print("Date:", apod_data['date'])
+            print("Explanation:", apod_data['explanation'])
+            print("HD_URL:", apod_data.get('hdurl', "Not available"))
+            print("URL:", apod_data['url'])
+
+            # Open and display the image
+            response = requests.get(apod_data['url'])
+            image = Image.open(BytesIO(response.content))
+            image.show()
+            break
+            
+        else:
+            print("Error:", apod_data.get('msg', 'Unknown error'))
+            print("Enter a valid date") 
+    except:
+                break
+print("APOD SUCCESSFULLY CREATED")
+   
