@@ -2,9 +2,11 @@ import random
 
 #Check Advance Variables
 checks_cleared = []
+purpose = ("")
 win_mcnuts = "-1"
 win_hairboy = "-1"
-
+win_benny = "-1"
+win_elfking = "-1"
 
 #Guessing Game Variables
 answer = -1
@@ -67,11 +69,84 @@ def guessing_game_hairboy():
             print("Congratulations! You guessed the number. The number was", answer)
             checks_cleared.append("Gorgeous Hair Boy")
             win_hairboy = "1"
+            print('"Oh to be deafeated. You are a good lad. ADVANCE!"')
+            print("You march on forward towards room three....")
             break
         else:
             print("An Error has occured")
             break
 
+def guessing_game_benny():
+    global win_benny
+    lives_counter = 5
+    answer = random.randint(1, 25)
+    print('"one through 25... go. 5 lives. "')
+    print("He is soft, but stern.")
+    while loop == True:
+        if lives_counter <= 0:
+            loop == False
+            print("You have failed to guess the number. The number was", answer)
+            print('"sorry. it is for your own good."')
+            print("Benny slashes his weapon. It looks like a pink baseball bat.")
+            print("home run. you black out...")
+            exit()
+        user_guess = input("->")
+        if float(user_guess) > answer:
+            lives_counter -= 1
+            print("Guess Lower. You have", lives_counter, "lives left.")
+        elif float(user_guess) < answer:
+            lives_counter -= 1
+            print("Guess Higher. You have", lives_counter, "lives left.")
+        elif float(user_guess) == answer:
+            print("Congratulations! You guessed the number. The number was", answer)
+            checks_cleared.append("Benny The Chocolate Protector")
+            win_benny = "1"
+            print('You won against Benny. He lays tired after the battle you just had.')
+            print("You march on forward towards the final room. Benny gives you a stern smile, and hands you a gallon of chocolate milk.")
+            print("While of few words, you will remember his kindness")
+            break
+        else:
+            print("An Error has occured")
+            break
+
+def guessing_game_elfking():
+    global win_benny
+    global purpose
+    lives_counter = 5
+    answer = "3.141592653589793238462643383270288419716939937510509749445923078164086208993829930208929379817618382973947394783"
+    print('"WE CALL HIM THE ELF KING!" Benny blurts')
+    print('"HE IS FOUL! HE HAS IMPRISONED ME SINCE I WENT AND DID HIS STUPID CHALLANGE"')
+    print('"YOU BROKE MY CURSE BY BEATING ME! Now, try to beat him..."')
+    print("The Elf King snickers. He seems like he is not here to play nice.")
+    print(player_name, ", come at me.... 3 guesses. Number 1 through 5...")
+    print("He smiles. His mouth not moving. He has a strong aura though")
+    print('"Telepathy.... Good luck.." Benny remains by your side')
+    while loop == True:
+        if lives_counter <= 0:
+            loop == False
+            print("You have failed to guess the number. The number was", answer)
+            print('"sorry. it is for your own good."')
+            print("Benny slashes his weapon. It looks like a pink baseball bat.")
+            print("home run. you black out...")
+            exit()
+        user_guess = input("->")
+        if float(user_guess) > answer:
+            lives_counter -= 1
+            print("Guess Lower. You have", lives_counter, "lives left.")
+        elif float(user_guess) < answer:
+            lives_counter -= 1
+            print("Guess Higher. You have", lives_counter, "lives left.")
+        elif float(user_guess) == answer:
+            print("Congratulations! You guessed the number. The number was", answer)
+            checks_cleared.append("Benny The Chocolate Protector")
+            win_benny = "1"
+            print('You won against Benny. He lays tired after the battle you just had.')
+            print("You march on forward towards the final room. Benny gives you a stern smile, and hands you a gallon of chocolate milk.")
+            print("While of few words, you will remember his kindness")
+            break
+        else:
+            print("An Error has occured")
+            break
 def level_one():
     print("You enter your first gate. The door is unlocked as it is the first goal to overcome...")
     print("Glancing, you see no human. Rather, a tree with acorns. And a hungry squirrel draws near")
@@ -92,14 +167,32 @@ def level_two():
         
 def level_three():
     if win_hairboy == ("1"):
-        print('Advancement Text')
+        print('You walk into the 3rd room. You feel a heavy aura draw upon you. You tremble')
+        print('A softspoken man emerges. He is very tall and intimdating. But, he seems kind somehow')
+        print('Under his breath, he says his name..... Benny. He draws, ready to fight.')
     elif win_hairboy == ("-1"):
         print("Challenger 2 has not been defeated yet. Please take on Challenger 2 first")
     else:
         print("An Error has occured")
 
 def final_battle():
-    pass
+    global purpose
+    if win_benny == ("1"):
+        print('The 4th and final room appears. You enter. You see Benny trailing behind...')
+        print("You feel as if he knows something you do not. You question why you are here.")
+        print("You knoow you want to be the master guesser, but why?")
+        print("What is your purpose...")  
+        purpose = input("->")
+        print(purpose,"?..... wise.")
+        print("You hear a crash and feel a presence")
+        print('"WELCOME TO BROWN TOWN!')
+        guessing_game_elfking()
+
+    elif win_hairboy == ("-1"):
+        print("Challenger 3 has not been defeated yet. Please take on Challenger 2 first")
+    else:
+        print("An Error has occured")
+
 
 #Game Introduction
 print("Welcome to the Master Guessing Game!")
@@ -152,7 +245,10 @@ while True:
         elif debug == "2":
             guessing_game_hairboy()
         elif debug == "3":
-            pass
+            guessing_game_benny()
+        elif debug == "4":
+            win_benny = "1"
+            final_battle()
         else:
             pass
 
