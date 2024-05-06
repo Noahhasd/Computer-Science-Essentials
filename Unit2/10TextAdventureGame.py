@@ -3,6 +3,7 @@ import random
 #Check Advance Variables
 checks_cleared = []
 purpose = ("")
+#array purpose
 win_mcnuts = "-1"
 win_hairboy = "-1"
 win_benny = "-1"
@@ -27,6 +28,7 @@ def guessing_game_mcnuts():
             print("You have failed to guess the number. The number was", answer)
             print("You lay defeated. As Mr. McNuts feasts on your corpse. He wishes it was covered in peanut butter...")
             print("You do not taste very good....")
+            #break game
             exit()
         user_guess = input("->")
         if float(user_guess) > answer:
@@ -49,6 +51,7 @@ def guessing_game_mcnuts():
 
 #Guessing game for level 2
 def guessing_game_hairboy():
+    #import global variables into functions
     global win_hairboy
     lives_counter = 5
     answer = random.randint(1, 20)
@@ -59,6 +62,7 @@ def guessing_game_hairboy():
             print("You have failed to guess the number. The number was", answer)
             print('"You put up a good fight... Unfortunatly your road ends here. Take some hair spray for the road"')
             print("The travel size bag of hair spray was thrown to you. While Hair Boy was kind, you cannot help but feel insulted somehow...")
+            #break game
             exit()
         user_guess = input("->")
         if float(user_guess) > answer:
@@ -80,6 +84,7 @@ def guessing_game_hairboy():
 
 #Guessing game for level 3
 def guessing_game_benny():
+    #import global variables into functions
     global win_benny
     lives_counter = 5
     answer = random.randint(1, 25)
@@ -92,6 +97,7 @@ def guessing_game_benny():
             print('"sorry. it is for your own good."')
             print("Benny slashes his weapon. It looks like a pink baseball bat.")
             print("home run. you black out...")
+            #break game
             exit()
         user_guess = input("->")
         if float(user_guess) > answer:
@@ -114,9 +120,12 @@ def guessing_game_benny():
 
 #Guessing game for level 4 (round logic to prevent victory)
 def guessing_game_elfking():
+    #import global variables into functions
     global win_benny
     global purpose
+    #purpose was added to NOT OVERFLOW text. nothing more. for funny lols
     lives_counter = 3
+    #make it impossible
     answer = float(3.23448393832)
     print('"WE CALL HIM THE ELF KING!" Benny blurts')
     print('"HE IS FOUL! HE HAS IMPRISONED ME SINCE I WENT AND DID HIS STUPID CHALLENGE"')
@@ -137,6 +146,7 @@ def guessing_game_elfking():
             print("He falls 3 inches. But for a small man, that is a large height.")
             print("Moral of this story, throwing bats is way more efficient than playing a guessing game for victory..")
             exit()
+            #END GAME
         user_guess = input("->")
         if float(user_guess) > answer:
             lives_counter -= 1
@@ -148,6 +158,9 @@ def guessing_game_elfking():
             print("An Error has occured")
             break
 
+
+# else variables following sections crash protection
+        
 #Transport to level 1
 def level_one():
     print("You enter your first gate. The door is unlocked as it is the first goal to overcome...")
@@ -219,6 +232,7 @@ while True:
     print("6) Exit")
     option_input = input("->")
 
+#call to other functions from if then
     if option_input == "1":
         level_one()
     elif option_input == "2":
@@ -239,9 +253,11 @@ while True:
             exit()
         elif leave == "no":
             print("GOOD LAD! KEEP FIGHTING ON!")
+
+        #microaggressions (prevent errors)
         else:
             print("If you are seeing this, you either cannot read, hit the caps button, or have the spelling of a 2nd grader!")
             print("maybe it is your sign to give up after all....")
-
+    # more microaggressions (100% needed)
     else:
         print("WHAT PART ABOUT A NUMBER 1 THROUGH 5 IS SO HARD TO COMPREHEND!?!?!?!")
