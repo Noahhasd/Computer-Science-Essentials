@@ -13,6 +13,7 @@ answer = -1
 user_guess = -1
 loop = True
 
+#Guessing game for level 1
 def guessing_game_mcnuts():
     global win_mcnuts
     lives_counter = 7
@@ -46,6 +47,7 @@ def guessing_game_mcnuts():
             print("An Error has occured")
             break
 
+#Guessing game for level 2
 def guessing_game_hairboy():
     global win_hairboy
     lives_counter = 5
@@ -76,6 +78,7 @@ def guessing_game_hairboy():
             print("An Error has occured")
             break
 
+#Guessing game for level 3
 def guessing_game_benny():
     global win_benny
     lives_counter = 5
@@ -109,13 +112,14 @@ def guessing_game_benny():
             print("An Error has occured")
             break
 
+#Guessing game for level 4 (round logic to prevent victory)
 def guessing_game_elfking():
     global win_benny
     global purpose
-    lives_counter = 5
-    answer = "3.141592653589793238462643383270288419716939937510509749445923078164086208993829930208929379817618382973947394783"
+    lives_counter = 3
+    answer = float(3.23448393832)
     print('"WE CALL HIM THE ELF KING!" Benny blurts')
-    print('"HE IS FOUL! HE HAS IMPRISONED ME SINCE I WENT AND DID HIS STUPID CHALLANGE"')
+    print('"HE IS FOUL! HE HAS IMPRISONED ME SINCE I WENT AND DID HIS STUPID CHALLENGE"')
     print('"YOU BROKE MY CURSE BY BEATING ME! Now, try to beat him..."')
     print("The Elf King snickers. He seems like he is not here to play nice.")
     print(player_name, ", come at me.... 3 guesses. Number 1 through 5...")
@@ -124,10 +128,14 @@ def guessing_game_elfking():
     while loop == True:
         if lives_counter <= 0:
             loop == False
-            print("You have failed to guess the number. The number was", answer)
-            print('"sorry. it is for your own good."')
-            print("Benny slashes his weapon. It looks like a pink baseball bat.")
-            print("home run. you black out...")
+            print("You have failed to guess the number. The number was", round(int(3.4),0))
+            print('You stand back astonished! Chances are you already picked 3...')
+            print("He is talking to you")
+            print(player_name,", are you forgetting.. about ROUND?!?!?!")
+            print("You indeed did. You sense a monologue about to happen from The Elf King.")
+            print("However, Benny is getting tired and throws his bat at the King")
+            print("He falls 3 inches. But for a small man, that is a large height.")
+            print("Moral of this story, throwing bats is way more efficient than playing a guessing game for victory..")
             exit()
         user_guess = input("->")
         if float(user_guess) > answer:
@@ -136,23 +144,18 @@ def guessing_game_elfking():
         elif float(user_guess) < answer:
             lives_counter -= 1
             print("Guess Higher. You have", lives_counter, "lives left.")
-        elif float(user_guess) == answer:
-            print("Congratulations! You guessed the number. The number was", answer)
-            checks_cleared.append("Benny The Chocolate Protector")
-            win_benny = "1"
-            print('You won against Benny. He lays tired after the battle you just had.')
-            print("You march on forward towards the final room. Benny gives you a stern smile, and hands you a gallon of chocolate milk.")
-            print("While of few words, you will remember his kindness")
-            break
         else:
             print("An Error has occured")
             break
+
+#Transport to level 1
 def level_one():
     print("You enter your first gate. The door is unlocked as it is the first goal to overcome...")
     print("Glancing, you see no human. Rather, a tree with acorns. And a hungry squirrel draws near")
     print("MR. MCNUTS SEEKS HIS REVENGE!")
     guessing_game_mcnuts()
-    
+
+#Transport to level 2 (level 1 logic finish) 
 def level_two():
     if win_mcnuts == ("1"):
         print("Uneasy of the strands of hair that just flew from the room, you continue onto the second room")
@@ -164,17 +167,20 @@ def level_two():
         print("Challenger 1 has not been defeated yet. Please take on Challenger 1 first")
     else:
         print("An Error has occured")
-        
+
+#Transport to level 3 (level 2 logic finish)         
 def level_three():
     if win_hairboy == ("1"):
         print('You walk into the 3rd room. You feel a heavy aura draw upon you. You tremble')
         print('A softspoken man emerges. He is very tall and intimdating. But, he seems kind somehow')
         print('Under his breath, he says his name..... Benny. He draws, ready to fight.')
+        guessing_game_benny()
     elif win_hairboy == ("-1"):
         print("Challenger 2 has not been defeated yet. Please take on Challenger 2 first")
     else:
         print("An Error has occured")
 
+#Transport to level 4 (level 3 logic finish) 
 def final_battle():
     global purpose
     if win_benny == ("1"):
@@ -193,7 +199,6 @@ def final_battle():
     else:
         print("An Error has occured")
 
-
 #Game Introduction
 print("Welcome to the Master Guessing Game!")
 print("You are on the quest to be the very best at getting lucky!")
@@ -202,6 +207,7 @@ print("One wrong move and your game is over.... Enter if you dare")
 print("Enter Your name, challenger.....")
 player_name = input("->")
 
+#main menu
 while True:
     print("Hello,", player_name)
     print("What would you like to do? Remember, you must challange the stages in order and cannot skip ahead!")
@@ -211,7 +217,6 @@ while True:
     print("4) The Final Battle....")
     print("5) View Previous Wins")
     print("6) Exit")
-    print("7) DEBUG: DELETE AFTER GAME IS DONE")
     option_input = input("->")
 
     if option_input == "1":
@@ -237,27 +242,6 @@ while True:
         else:
             print("If you are seeing this, you either cannot read, hit the caps button, or have the spelling of a 2nd grader!")
             print("maybe it is your sign to give up after all....")
-    elif option_input == "7":
-        print("DEBUG. ENTER FIGHT YOU WANT TO SKIP TO")
-        debug = input("->")
-        if debug == "1":
-            guessing_game_mcnuts()
-        elif debug == "2":
-            guessing_game_hairboy()
-        elif debug == "3":
-            guessing_game_benny()
-        elif debug == "4":
-            win_benny = "1"
-            final_battle()
-        else:
-            pass
 
     else:
         print("WHAT PART ABOUT A NUMBER 1 THROUGH 5 IS SO HARD TO COMPREHEND!?!?!?!")
-
-
-
-            
-        
-
-    
